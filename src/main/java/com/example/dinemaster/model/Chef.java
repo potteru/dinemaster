@@ -5,81 +5,77 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "chef")
+@Table(name="chef")
 public class Chef {
-	
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	
-	@Column(name = "name")
-	String name;
-	
-	@Column(name = "address")
-	String address;
-	
-	@Column(name = "cuisineType")
-	String cuisineType;
-	
-	@Column(name = "rating")
-	int rating;
-	
-	public Chef() {
-		
-	}
-	
-	public Chef(int id, String name, String address, String cuisineType, int rating) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.cuisineType = cuisineType;
-		this.rating = rating;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+    @Column(name = "firstname")
+    private String firstName;
+    @Column(name = "lastname")
+    private String lastName;
+    @Column(name = "expertise")
+    private String expertise;
+    @Column(name = "experienceyears")
+    private int experienceYears;
+    @ManyToOne
+    @JoinColumn(name = "restaurantid")
+    private Restaurant restaurant;
 
-	public int getId() {
-		return id;
-	}
+    public Chef() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getCuisineType() {
-		return cuisineType;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setCuisineType(String cuisineType) {
-		this.cuisineType = cuisineType;
-	}
+    public String getExpertise() {
+        return expertise;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public void setExpertise(String expertise) {
+        this.expertise = expertise;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-	
-	
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+
+    public void setExperienceYears(int experienceYears) {
+        this.experienceYears = experienceYears;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }
